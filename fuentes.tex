@@ -1,0 +1,18 @@
+\begin{circuitikz}
+	\draw
+	%fuentes
+	(0,0) node[npn, xscale=-1, anchor = C, label=left:$Q_{10}$](Q10){}
+	(Q10.B) to[short, *-] ++(0,0) to node[npn, anchor=B, label=right:$Q_{11}$](Q11){} ++(0,0)
+	(Q10.B) to[R, l_=$R_7$] ++(0,1.5) to node[ground, yscale=-1]{} ++(0,0)
+	(Q10.B) to [empty diode ] ++ (0,-0.97)
+	to [empty diode] ++ (0,-1) coordinate(huevo)
+	to node[vee]{$-V_{cc}$}++(0,-0.5)
+	(Q11.E) to[R,l^=$R_6$] ++(0,-1.2) to [short, -*](huevo)
+	(Q10.E) to[R,l_=$R_5$] ++(0,-1.2) to [short](huevo)	
+	
+	;
+	\draw[densely dashed]
+	(Q10.C) to[short, i<^= $I_{REF_1}$, draw=white] ++(0,1)
+	(Q11.C) to[short, i<_= $I_{REF_2}$, draw=white] ++(0,1)
+	;
+\end{circuitikz}%

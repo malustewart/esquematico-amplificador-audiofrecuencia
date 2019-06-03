@@ -1,0 +1,31 @@
+\begin{circuitikz}[american voltages, american currents]
+	\draw
+	(0,0) -- ++ (1,0) node[npn, anchor=B, label=right:$Q_4$](Q4){}
+	(Q4.E) to[R,l^=$R_{10}$]++(0,-1.5) coordinate (batata) to[R,l^=$R_{11}$]++(0,-1.5)
+	to node[pnp, anchor=E, label=right:$Q_5$](Q5){} ++(0,-0.45)
+	(Q4.C) to[short,*-] ++(1.5,0) node[pnp, anchor=B, label=right:$Q_6$](Q6){}
+	(Q6.E) to[R,l_=$R_3$] ++(-2,0) -| (Q4.C)
+	(Q5.C) to[short,*-] ++(1.5,0) node[npn, anchor=B, label=right:$Q_7$](Q7){}
+	(Q7.E) to[R,l^=$R_4$] ++(-2,0) -| (Q5.C)
+	(Q6.B) to[C,*-,l^=$C_4$] ++(0,-2) to[short,-*] (Q7.B)
+	(Q6.C) -- (Q7.C) coordinate[pos=0.475](papa) 
+	(papa) to [short, *-*] (batata)
+	(papa) to [short, -o] ++(1,0) node[above]{$V_{out}$}
+	(Q6.E) -- ++(0,0.75) node[vcc]{$V_{cc}$}
+	(Q7.E) -- ++(0,-1.5) node[vee]{$-V_{cc}$}
+	%multiplicador de Vbe
+	(0,0) to [short, *-*] ++ (0,-1) coordinate(aux3)
+	(aux3) -- ++(-0.5,0) to [R,l_=$R_8$] coordinate(aux4) ++(0,-1.5) to [R,l_=$R_9$] ++(0,-1.5) --++(0.5,0) coordinate(aux5) to [short,*-]++(0,-.25)
+	(aux4) to node[npn, anchor=B, label=right:$Q_{12}$](Q12){} ++(0,0) 
+	(Q12.E)|-(aux5)
+	(Q12.C)|-(aux3)
+	(aux5) |- (Q5.B)
+	(aux5) to [short, -*] ++(0,-.73) to [I, l_=$I_{REF_2}$] ++(0,-1.3) coordinate(pipicucu)
+	;
+	
+	\draw[densely dashed]
+	(pipicucu) -- ++(0,-1)
+	(0,0) -- (0,1) node[label=right:Driver]{}
+	(batata) -- ++(-0.6,0) |- (-1.6,-0.5) node[above]{Feedback}
+	;
+\end{circuitikz}%
