@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Re(loop gain),
+	ylabel =  Im(loop gain),
+	grid = both,
+	width = \textwidth,
+	]
+	\addplot[black,line width=3pt] table [x index=1, y index = 2, col sep=comma] {data/falsodarlington_loopgain_cart_5.csv};
+\end{axis}
+\end{tikzpicture}

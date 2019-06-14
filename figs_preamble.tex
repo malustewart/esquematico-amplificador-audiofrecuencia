@@ -1,7 +1,7 @@
 \documentclass[11pt, tikz, multi=page]{standalone}
 %\usepackage{sansmathfonts}		% Sans Serif equations
 \usepackage[T1]{fontenc}			% Output font encoding for international characters
-\usepackage[utf8]{inputenc}			% Encoding of files: utf8
+%\usepackage[utf8]{inputenc}			% Encoding of files: utf8
 %\renewcommand*\familydefault{\sfdefault} 	% Sans Serif as default font
 \usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
 \usepackage{amssymb,amsmath}
@@ -19,6 +19,8 @@
 \usetikzlibrary{plotmarks}
 \usetikzlibrary{arrows.meta}
 \usepgfplotslibrary{patchplots}
+\usetikzlibrary{pgfplots.colorbrewer} % LATEX and plain TEX
+
 
 \newcommand{\path}[1] {lowres/#1}  
 
@@ -102,3 +104,9 @@
 		\end{tikzpicture}
 	}
 }
+\pgfplotsset{
+% initialize Set1-5:
+cycle list/RdYlBu,
+every axis/.append style={line width=1pt}
+}
+

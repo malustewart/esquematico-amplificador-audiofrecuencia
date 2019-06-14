@@ -1,0 +1,16 @@
+
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+	xlabel = Frecuencia (Hz),
+	ylabel =  $|$loop gain$|$(dB),
+	grid = both,
+	width = \textwidth,
+	xmin = 0.1,
+	xmax = 100000000000,
+	ymin = -190,
+	ymax = 190
+	]
+
+	\addplot [black,line width=3pt] table [x index=0, y index = 2, col sep=comma] {data/falsodarlington_loopgain_polar_5.csv};
+\end{semilogxaxis}
+\end{tikzpicture}

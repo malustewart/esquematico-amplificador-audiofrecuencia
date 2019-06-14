@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel = Re(loop gain),
+	ylabel =  Im(loop gain),
+	grid = both,
+	width = \textwidth,
+	xmin = -2e0,
+	xmax = 2e0,
+	ymin = -2e0,
+	ymax = 2e0,
+	restrict x to domain=-5:5,
+	restrict y to domain=-5:5,
+	legend pos=outer north east,
+	]
+	\draw[draw=lightgray](0, 0) circle (1);		
+	\foreach \n in {0,1,...,17}
+	{
+		\addplot table [x index=1, y index = 2, col sep=comma] {data/falsodarlington_loopgain_cart_\n.csv};
+	}
+	\legend{2pF,3.2pF, 5.0pF, 7.9pF, 12.6pF, 20pF, 31pF, 50pF, 79pF, 126pF, 200pF, 317pF, 502pF, 796pF, 1.3nF, 2nF, 3.1nF, 5nF }
+	\end{axis}
+\end{tikzpicture}

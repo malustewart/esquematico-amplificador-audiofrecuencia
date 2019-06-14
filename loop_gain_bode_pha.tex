@@ -1,0 +1,20 @@
+
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+	xlabel = Frecuencia (Hz),
+	ylabel =  $\angle$ loop gain($^\circ$),
+	grid = both,
+	width = \textwidth,
+	xmin = 0.1,
+	xmax = 100000000000,
+	legend pos=outer north east,
+	ymin = -190,
+	ymax = 190
+	]
+	\foreach \n in {0,1,...,17}
+	{
+		\addplot table [x index=0, y index = 2, col sep=comma] {data/falsodarlington_loopgain_polar_\n.csv};
+	}
+	\legend{2pF,	3.2pF, 5.0pF, 7.9pF, 12.6pF, 20pF, 31pF, 50pF, 79pF, 126pF, 200pF, 317pF, 502pF, 796pF, 1.3nF, 2nF, 3.1nF, 5nF }
+\end{semilogxaxis}
+\end{tikzpicture}

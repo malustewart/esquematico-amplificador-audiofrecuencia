@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	xlabel = Frecuencia (Hz),
+	ylabel =  $|Z_{in}|$($K\Omega$),
+	width = \textwidth, 
+	grid = both,
+	xmax = 40000,
+	xmin = 1e1,
+	ymin = 1e2,
+	ymax =  1e4,
+	extra y ticks={6000, 2.3e2},
+	extra y tick style={
+	grid=major,
+	},
+	extra y tick labels = {
+    $Z_{max} = 6M\Omega$,
+    $Z_{min} = 230K\Omega$
+	},
+	]
+\draw[densely dashed, draw=red, line width=1pt]
+	(20,1e2) to (20,6000) to (1,6000)
+	(2e4,1e2) to (2e4, 2.3e2) to (1, 2.3e2)
+	;
+
+%\addplot [black,line width=3pt]table [x=Freq., y expr=\thisrowno{1}/1000, col sep=comma] {data/falsodarlington_zin_no_R.csv};
+\addplot [black,line width=3pt]table [x=Freq., y index = 1, col sep=comma] {data/falsodarlington_zin_no_R.csv};
+\end{loglogaxis}
+\end{tikzpicture}
